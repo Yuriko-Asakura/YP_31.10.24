@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link th:href="@{/css/list.css}" rel="stylesheet" />
+</head>
+<body class="body">
+<div class="text-end">
+    <form th:action="@{/logout}" method="post">
+        <button type="submit" class="btn btn-warning">Log out</button>
+    </form>
+    Главная страница
+
+    <a href="/user/product">Функционал для пользователя</a>
+    <a href="/admin/users_view">Функционал для админа</a>
+    <a href="/men/view">Функционал для менеджера</a>
+</div>
+</body>
+</html>

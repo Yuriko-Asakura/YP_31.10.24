@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Update Supplier</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container mt-5">
+  <h1>Update Supplier</h1>
+  <form th:action="@{/admin/sup/{id}/update(id=${supplier_object.id})}" method="post">
+    <div class="form-group">
+      <label>Name:</label>
+      <input type="text" class="form-control" name="name" th:value="${supplier_object.name}" required>
+    </div>
+    <div class="form-group">
+      <label>Contact Info:</label>
+      <input type="text" class="form-control" name="contactInfo" th:value="${supplier_object.contactInfo}" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Update</button>
+    <a th:href="@{/admin/sup_view}" class="btn btn-secondary">Cancel</a>
+  </form>
+</div>
+</body>
+</html>

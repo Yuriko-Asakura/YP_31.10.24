@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Обновление корзины покупок</title>
+</head>
+<body>
+<h1>Обновление корзины покупок</h1>
+<form action="#" th:action="@{/men/{id}/update_shop(id=${shoppingCart.id})}" method="post">
+  <label for="userId">Пользователь:</label>
+  <select id="userId" name="userId" required>
+    <option th:each="user : ${users}" th:value="${user.idUser}" th:text="${user.username}"
+            th:selected="${user.idUser == shoppingCart.user.idUser}"></option>
+  </select>
+  <br>
+  <label for="productId">Продукт:</label>
+  <select id="productId" name="productId" required>
+    <option th:each="product : ${products}" th:value="${product.id}" th:text="${product.name}"
+            th:selected="${product.id == shoppingCart.productID.id}"></option>
+  </select>
+  <br>
+  <button type="submit">Обновить корзину</button>
+</form>
+<a href="/men/view_shop">Назад к списку корзин</a>
+</body>
+</html>

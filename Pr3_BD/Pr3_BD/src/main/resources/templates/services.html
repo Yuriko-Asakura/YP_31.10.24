@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Список услуг</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <h1>Список услуг</h1>
+    <a href="/services/add" class="btn btn-primary">Добавить новую услугу</a>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Название</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="service : ${services}">
+            <td th:text="${service.id}"></td>
+            <td th:text="${service.serviceName}"></td>
+            <td>
+                <a th:href="@{/services/edit/{id}(id=${service.id})}" class="btn btn-warning">Редактировать</a>
+                <a th:href="@{/services/delete/{id}(id=${service.id})}" class="btn btn-danger" onclick="return confirm('Вы уверены, что хотите удалить эту услугу?');">Удалить</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+</div>
+</body>
+</html>

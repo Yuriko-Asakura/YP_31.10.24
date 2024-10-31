@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Список профилей</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container mt-5">
+  <h1 class="mb-4">Список профилей</h1>
+  <a href="/profiles/add" class="btn btn-primary mb-3">Добавить новый профил</a>
+  <table class="table table-striped">
+    <thead class="thead-dark">
+    <tr>
+      <th>ID</th>
+      <th>Имя</th>
+      <th>телефон номер</th>
+      <th>Действия</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="profile : ${profiles}">
+      <td th:text="${profile.id}"></td>
+      <td th:text="${profile.address}"></td>
+      <td th:text="${profile.phoneNumber}"></td>
+      <td>
+        <a th:href="@{/profiles/edit/{id}(id=${profile.id})}" class="btn btn-warning btn-sm">Редактировать</a>
+        <a th:href="@{/profiles/delete/{id}(id=${profile.id})}" class="btn btn-danger btn-sm" onclick="return confirm('Вы уверены?');">Удалить</a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+</body>
+</html>

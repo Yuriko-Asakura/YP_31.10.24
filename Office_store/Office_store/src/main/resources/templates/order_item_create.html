@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create Order Item</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+  <h1>Create Order Item</h1>
+  <form action="/men/create_OrderItem" method="post">
+    <div class="form-group">
+      <label for="productId">Product</label>
+      <select name="productId" id="productId" class="form-control">
+        <option th:each="product : ${products}" th:value="${product.id}" th:text="${product.name}"></option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="orderId">Order</label>
+      <select name="orderId" id="orderId" class="form-control">
+        <option th:each="order : ${orders}" th:value="${order.id}" th:text="${order.id}"></option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="quantity">Quantity</label>
+      <input type="number" name="quantity" id="quantity" class="form-control" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Create Order Item</button>
+  </form>
+  <a href="/men/view_OrderItem" class="btn btn-secondary mt-3">Back to Order Items</a>
+</div>
+</body>
+</html>

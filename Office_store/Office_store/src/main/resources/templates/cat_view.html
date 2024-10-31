@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Categories</title>
+</head>
+<body>
+<h1>Categories</h1>
+<a href="/admin/cat/create">Create New Category</a>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Actions</th>
+    </tr>
+    <th:block th:each="category : ${cat_list}">
+        <tr>
+            <td th:text="${category.id}"></td>
+            <td th:text="${category.name}"></td>
+            <td>
+                <a th:href="@{/admin/cat/{id}/update(id=${category.id})}">Update</a>
+                <a th:href="@{/admin/cat/{id}/delete(id=${category.id})}">Delete</a>
+            </td>
+        </tr>
+    </th:block>
+</table>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shopping Cart List</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+  <h1>Shopping Cart List</h1>
+  <table class="table mt-3">
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>User</th>
+      <th>Product</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="cart : ${shoppingCarts}">
+      <td th:text="${cart.id}"></td>
+      <td th:text="${cart.user.username}"></td> <!-- Предполагается, что у ModelUser  есть поле name -->
+      <td th:text="${cart.productID.name}"></td> <!-- Предполагается, что у model_Product есть поле name -->
+      <td>
+        <a th:href="@{/men/{id}/update_shop(id=${cart.id})}">Обновить</a>
+        <a th:href="@{/men/{id}/delete_shop(id=${cart.id})}" onclick="return confirm('Вы уверены, что хотите удалить?');">Удалить</a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <a href="/men/create_shop">Добавить корзину</a>
+</div>
+</body>
+</html>

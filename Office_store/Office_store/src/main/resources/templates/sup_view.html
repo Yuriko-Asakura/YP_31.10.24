@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Suppliers</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container mt-5">
+    <h1>Suppliers</h1>
+    <a href="/admin/sup/create" class="btn btn-primary mb-3">Create New Supplier</a>
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Contact Info</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <th:block th:each="supplier : ${sup_list}">
+            <tr>
+                <td th:text="${supplier.id}"></td>
+                <td th:text="${supplier.name}"></td>
+                <td th:text="${supplier.contactInfo}"></td>
+                <td>
+                    <a th:href="@{/admin/sup/{id}/update(id=${supplier.id})}" class="btn btn-warning btn-sm">Update</a>
+                    <a th:href="@{/admin/sup/{id}/delete(id=${supplier.id})}" class="btn btn-danger btn-sm">Delete</a>
+                </td>
+            </tr>
+        </th:block>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

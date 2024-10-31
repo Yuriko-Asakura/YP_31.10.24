@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Редактировать элемент заказа</title>
+</head>
+<body>
+<h1>Редактировать элемент заказа</h1>
+<form th:action="@{/orderItems/edit}" th:object="${orderItem}" method="post">
+    <input type="hidden" th:field="*{id}" />
+    <label for="description">Описание:</label>
+    <input type="text" id="description" th:field="*{description}" required>
+    <div th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></div>
+
+    <label for="price">Цена:</label>
+    <input type="number" id="price" th:field="*{price}" required>
+    <div th:if="${#fields.hasErrors('price')}" th:errors="*{price}"></div>
+
+    <button type="submit">Сохранить изменения</button>
+</form>
+<a href="/orderItems">Назад к списку элементов заказов</a>
+</body>
+</html>

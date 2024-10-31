@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Список элементов заказов</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container mt-5">
+    <h1>Список элементов заказов</h1>
+    <a href="/orderItems/add" class="btn btn-primary mb-3">Добавить новый элемент заказа</a>
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Количество</th>
+            <th>Название товара</th>
+            <th>Дата поставки товара</th>
+            <th>Id заказа товара</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="orderItem : ${orderItems}">
+            <td th:text="${orderItem.id}"></td>
+            <td th:text="${orderItem.quantity}"></td>
+            <td th:text="${orderItem.item.itemName}"></td>
+            <td th:text="${orderItem.order.orderDate}"></td>
+            <td th:text="${orderItem.order.id}"></td>
+            <td>
+                <a th:href="@{/orderItems/edit/{id}(id=${orderItem.id})}" class="btn btn-warning">Редактировать</a>
+                <a th:href="@{/orderItems/delete/{id}(id=${orderItem.id})}"
+                   onclick="return confirm('Вы уверены?');" class="btn btn-danger">Удалить</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

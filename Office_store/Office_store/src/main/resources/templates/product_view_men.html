@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Список продуктов</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container mt-5">
+    <h2 class="mb-4">Список продуктов</h2>
+
+    <a href="/men/create_p" class="btn btn-primary mb-3">Создание продукта</a>
+    <table class="table table-bordered">
+        <thead class="thead-light">
+        <tr>
+            <th>Название</th>
+            <th>Описание</th>
+            <th>Цена (руб.)</th>
+            <th>Количество на складе</th>
+            <th>Категория</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="el : ${product_list}">
+            <td th:text="${el.name}"></td>
+            <td th:text="${el.description}"></td>
+            <td th:text="${el.price}"></td>
+            <td th:text="${el.stockQuantity}"></td>
+            <td th:text="${el.category.name}"></td>
+            <td>
+
+                <a th:href="@{/men/{id}/update_p(id=${el.id})}"
+                   class="btn btn-warning btn-sm">Обновить</a>
+                <a th:href="@{/men/{id}/delete_p(id=${el.id})}"
+                   class="btn btn-danger btn-sm"
+                   onclick="return
+                   confirm('Вы уверены, что хотите удалить этот продукт?');">
+                    Удалить</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Редактировать клиента</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container mt-5">
+    <h1>Редактировать клиента</h1>
+    <form th:action="@{/customers/edit}" th:object="${customer}" method="post">
+        <input type="hidden" th:field="*{id}" />
+
+        <div class="form-group">
+            <label for="name">Имя:</label>
+            <input type="text" id="name" th:field="*{name}" class="form-control" required />
+        </div>
+
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" th:field="*{email}" class="form-control" required />
+        </div>
+
+        <div class="form-group">
+            <label for="profile">Профиль:</label>
+            <select th:field="*{profile}" id="profile" class="form-control">
+                <option value="" disabled selected>Выберите профиль для доставки</option>
+                <th:block th:each="profile : ${profiles}">
+                    <option th:value="${profile.id}" th:text="${profile.phoneNumber}"></option>
+                </th:block>
+            </select>
+            <div th:if="${#fields.hasErrors('profile')}" class="text-danger">
+                <span th:errors="*{profile}"></span>
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-success">Обновить</button>
+        <a href="/customers" class="btn btn-secondary">Назад</a>
+    </form>
+</div>
+</body>
+</html>

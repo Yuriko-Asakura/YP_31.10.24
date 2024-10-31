@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Edit Item</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <h1>Edit Item</h1>
+    <form th:action="@{/items/edit}" th:object="${item}" method="post">
+        <input type="hidden" th:field="*{id}" />
+        <div class="form-group">
+            <label for="itemName">Item Name</label>
+            <input type="text" id="itemName" th:field="*{itemName}" class="form-control" />
+            <div class="text-danger" th:if="${#fields.hasErrors('itemName')}" th:errors="*{itemName}"></div>
+        </div>
+        <div class="form-group">
+            <label for="price">Price</label>
+            <input type="number" id="price" th:field="*{price}" class="form-control" />
+            <div class="text-danger" th:if="${#fields.hasErrors('price')}" th:errors="*{price}"></div>
+        </div>
+        <button type="submit" class="btn btn-success">Update Item</button>
+        <a href="/items" class="btn btn-secondary">Back to List</a>
+    </form>
+</div>
+</body>
+</html>

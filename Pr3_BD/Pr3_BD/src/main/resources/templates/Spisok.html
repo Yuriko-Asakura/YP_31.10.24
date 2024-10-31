@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Список страниц</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <link th:href="@{/css/list.css}" rel="stylesheet" />
+</head>
+
+<body class="body">
+<div th:insert="blocks/header"></div>
+<pre>
+
+
+<a href="/services" class="btn btn-primary">Список услуг</a>
+
+<a href="/customers" class="btn btn-primary">Список покупателей</a>
+
+<a href="/orderItems" class="btn btn-primary">Список предмет-заказ</a>
+
+<a href="/orders" class="btn btn-primary">Список заказов</a>
+
+<a href="/profiles" class="btn btn-primary">Список профиля</a>
+
+<a href="/items" class="btn btn-primary">Список товара</a>
+</pre>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Добавить услугу</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+  <h1>Добавить новую услугу</h1>
+  <form th:action="@{/services/add}" th:object="${service}" method="post">
+
+    <div class="form-group">
+      <label for="serviceName">Название услуги</label>
+      <input type="text" class="form-control" id="serviceName" name="serviceName" required>
+    </div>
+    <button type="submit" class="btn btn-success">Добавить</button>
+    <a href="/services" class="btn btn-secondary">Назад</a>
+  </form>
+</div>
+</body>
+</html>

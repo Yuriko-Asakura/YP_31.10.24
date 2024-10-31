@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Добавить способ получения товара</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+
+<div class="container mt-5">
+
+    <h2 class="text-center mb-4">Добавить способ получения товара</h2>
+    <form th:action="@{/many/add}" method="post" class="needs-validation" novalidate>
+        <div class="form-row">
+            <div class="col-md-6 mb-3">
+                <label for="services2">Способ получения:</label>
+                <select name="services2" id="services2" class="form-control" required>
+                    <option value="" disabled selected>Выберите способ получения</option>
+                    <option th:each="element : ${services}"
+                            th:value="${element.serviceName}"
+                            th:text="${element.serviceName}"></option>
+                </select>
+                <div class="invalid-feedback">
+                    Пожалуйста, выберите способ получения.
+                </div>
+            </div>
+            <div class="col-md-6 mb-3">
+                <label for="item1">Товар:</label>
+                <select name="item1" id="item1" class="form-control" required>
+                    <option value="" disabled selected>Выберите товар</option>
+                    <option th:each="element : ${items}"
+                            th:value="${element.itemName}"
+                            th:text="${element.itemName}"></option>
+                </select>
+                <div class="invalid-feedback">
+                    Пожалуйста, выберите товар.
+                </div>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Добавить способ получения</button>
+    </form>
+</div>
+</body>
+</html>
